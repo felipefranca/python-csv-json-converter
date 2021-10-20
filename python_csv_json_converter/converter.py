@@ -5,7 +5,7 @@ from pathlib import Path
 import click
 
 logging.basicConfig(
-    level="DEBUG", format="'%(asctime)s - %(name)s - %(levelname)s - %(message)s'"
+  level="DEBUG", format="'%(asctime)s - %(name)s - %(levelname)s - %(message)s'"
 )
 
 logger = logging.getLogger(__name__)
@@ -38,6 +38,28 @@ logger = logging.getLogger(__name__)
   )
 )
 def converter(input: str = "./", output: str = "./", delimiter: str = ",", prefix: str = None):
+    input_path = Path(input)
+    output_path = Path(output)
+    logger.info("input Path %s", input_path)
+    logger.info("output Path %s", output_path)
+    for p in [input_path, output_path]:
+      if not (p.is_file() or p.is_dir()):
+        raise TypeError("Not a valid path of file name.")
+    data = read_csv_file()
+    save_to_json_files()
+
+def read_csv_file(source: Path, delimiter: str = ",") -> tuple:
+    """Load a single csv file or all files withing a directory.
+
+    Args:
+        source (Path): Path for a single file or directory .
+        delimiter (str, optional): Separator for collumns int the csv's. Defaults to ",".
     
-    
-    logger.info("teste")
+    Returns:
+        tuple: All dataframes loaded from the given source path.
+    """
+    if source.is_file():
+        logger.info("Reading csv file %s",source)
+
+def save_to_json_files():
+     logger.info("Saving")
