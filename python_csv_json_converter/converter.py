@@ -49,7 +49,7 @@ def converter(input: str = "./", output: str = "./", delimiter: str = ",", prefi
     save_to_json_file(csvs=data, output_path=output_path, prefix=prefix)
 
 def read_csv_file(source: Path, delimiter: str = ",") -> tuple:
-    """Load a single csv file or all files withing a directory.
+    """Carrega um arquivo csv ou todos dentro do diretorio.
 
     Args:
         source (Path): Path for a single file or directory .
@@ -62,7 +62,7 @@ def read_csv_file(source: Path, delimiter: str = ",") -> tuple:
         logger.info("Reading csv file %s",source)
 
 def save_to_json_file(csvs: list, output_path: Path, prefix: str = None):
-    """Save dataframes to Disk.
+    """Salva o arquivo json.
 
     Args:
         csvs (tuple): Tuple with dataframes that will be converted.
@@ -82,7 +82,7 @@ def save_to_json_file(csvs: list, output_path: Path, prefix: str = None):
                 for row in rows:
                     file.write(format_json_row(row, (row != rows[-1])))
 
-                # Is the last row?
+                # Caso seja a última linha
                 if rows != content[-1]:
                     end_of_json = "},\n"
                 else:
@@ -93,7 +93,7 @@ def save_to_json_file(csvs: list, output_path: Path, prefix: str = None):
             file.write("]")
 
 def read_csv_file(source: Path, delimiter: str) -> list:
-    """Load csv files from disk.
+    """Carrega o arquivo csv do disco.
 
     Args:
         source (Path): Path of a single csv file or directory containing csvs to be parsed.
@@ -116,7 +116,7 @@ def read_csv_file(source: Path, delimiter: str) -> list:
 
 
 def read_csv(source: Path, delimiter: str) -> list:
-    """Load a file from disk.
+    """Lê o arquivo csv do disco de acordo com o parametro de path.
 
     Args:
         source (Path): Path of a single csv file to be parsed.
