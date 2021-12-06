@@ -133,8 +133,8 @@ def read_csv(source: Path, delimiter: str) -> list:
 
         for key, row in enumerate(content):
             if len(row) == len(first_line):
-                """Checks if all lines have values.
-                Some files have special character in last lines."""
+                """Verifica se todas as linhas tem valor.
+                Alguns arquivos contem caracteres especiais no final da linha."""
 
                 aux_list = list()
                 for index, column in enumerate(first_line):
@@ -145,14 +145,6 @@ def read_csv(source: Path, delimiter: str) -> list:
 
 
 def isfloat(value: str) -> bool:
-    """Checks if a value is floating.
-
-    Args:
-        value (str): A word.
-
-    Returns:
-        bool: A boolean value to show if the value is floating.
-    """
     try:
         a = float(value)
     except (TypeError, ValueError):
@@ -162,14 +154,6 @@ def isfloat(value: str) -> bool:
 
 
 def isint(value: str) -> bool:
-    """Checks if a value is integer.
-
-    Args:
-        value (str): A word.
-
-    Returns:
-        bool: A boolean value to show if the value is integer.
-    """
     try:
         a = float(value)
         b = int(a)
@@ -180,14 +164,6 @@ def isint(value: str) -> bool:
 
 
 def format_json_row(row: tuple, has_comma: bool) -> str:
-    """Transform a tuple in a formatted string.
-
-    Args:
-        row (tuple): A tuple containing the json name and value.
-        has_comma (bool): A boolean that indicates the use of a comma.
-    Returns:
-        bool: A formatted string.
-    """
     name, value = row
 
     tab = "".ljust(8, " ")
